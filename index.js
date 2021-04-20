@@ -33,7 +33,7 @@ client.connect(err => {
 
     // all products API
     app.get('/AllServices', (req, res) => {
-        productsCollection.find({}).limit(4)
+        productsCollection.find({}).limit(8)
             .toArray((err, documents) => {
                 res.send(documents);
             })
@@ -64,7 +64,7 @@ client.connect(err => {
 
     // all products API
     app.get('/AllReview', (req, res) => {
-        reviewsCollection.find({}).limit(4)
+        reviewsCollection.find({}).limit(8)
             .toArray((err, documents) => {
                 res.send(documents);
             })
@@ -81,7 +81,7 @@ client.connect(err => {
 
     // all Order API
     app.get('/AllOrder', (req, res) => {
-        orderCollection.find({}).limit(4)
+        orderCollection.find({})
             .toArray((err, documents) => {
                 res.send(documents);
             })
@@ -98,7 +98,7 @@ client.connect(err => {
 
     //  AllAdmin API
     app.get('/AllAdmin', (req, res) => {
-        adminCollection.find({}).limit(4)
+        adminCollection.find({}).limit(2)
             .toArray((err, documents) => {
                 res.send(documents);
             })
