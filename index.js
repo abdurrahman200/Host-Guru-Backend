@@ -112,6 +112,31 @@ client.connect(err => {
             })
     })
 
+
+    //SHowing Order By email API
+    app.get('/showOrders/:email', (req, res) => {
+        const email = req.params.email;
+        console.log(email);
+        adminCollection.find({ email: email })
+            .toArray((err, admin) => {
+                let filter = { email: email }
+                if (admin.length !== 0) {
+                    filter = '';
+                }
+                console.log(admin.length);
+                orderCollection.find({ email: email })
+                    .toArray((err, documents) => {
+                        console.log(documents)
+                        res.send(documents);
+                    })
+            })
+    })
+
+
+
+
+
+
 });
 
 app.get('/', (req, res) => {
