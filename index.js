@@ -120,13 +120,13 @@ client.connect(err => {
         adminCollection.find({ email: email })
             .toArray((err, admin) => {
                 let filter = { email: email }
-                if (admin.length !== 0) {
+                if (admin.length === 1) {
                     filter = '';
                 }
                 console.log(admin.length);
-                orderCollection.find({ email: email })
+                orderCollection.find(filter)
                     .toArray((err, documents) => {
-                        console.log(documents)
+                        // console.log(documents)
                         res.send(documents);
                     })
             })
