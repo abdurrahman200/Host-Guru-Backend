@@ -98,7 +98,7 @@ client.connect(err => {
 
     //  AllAdmin API
     app.get('/AllAdmin', (req, res) => {
-        adminCollection.find({}).limit(2)
+        adminCollection.find({})
             .toArray((err, documents) => {
                 res.send(documents);
             })
