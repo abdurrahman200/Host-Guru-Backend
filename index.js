@@ -81,7 +81,7 @@ client.connect(err => {
 
     // all Order API
     app.get('/AllOrder', (req, res) => {
-        orderCollection.find({})
+        orderCollection.find({ email: email })
             .toArray((err, documents) => {
                 res.send(documents);
             })
