@@ -47,7 +47,6 @@ client.connect(err => {
                 res.send(documents);
             })
     })
-
     // Product CheckOut to single product
     app.get('/service/:id', (req, res) => {
         productsCollection.find({ _id: ObjectId(req.params.id) })
@@ -55,7 +54,6 @@ client.connect(err => {
                 res.send(documents[0]);
             })
     })
-
     // delete product
     app.delete('/delete/:id', (req, res) => {
         productsCollection.deleteOne({ _id: ObjectId(req.params.id) })
@@ -90,7 +88,7 @@ client.connect(err => {
             })
     })
 
-    // all products API
+    // all Order API
     app.get('/AllOrder', (req, res) => {
         orderCollection.find({}).limit(4)
             .toArray((err, documents) => {
@@ -99,7 +97,7 @@ client.connect(err => {
     })
 
 
-    // Add Order API
+    // Add Admin API
     app.post('/addAdmin', (req, res) => {
         const products = req.body;
         adminCollection.insertOne(products)
@@ -108,15 +106,13 @@ client.connect(err => {
             })
     })
 
-     // all products API
+     //  AllAdmin API
      app.get('/AllAdmin', (req, res) => {
         adminCollection.find({}).limit(4)
             .toArray((err, documents) => {
                 res.send(documents);
             })
     })
-
-
 
 });
 
