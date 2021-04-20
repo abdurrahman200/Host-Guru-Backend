@@ -106,11 +106,19 @@ client.connect(err => {
             })
     })
 
-     //  AllAdmin API
-     app.get('/AllAdmin', (req, res) => {
+    //  AllAdmin API
+    app.get('/AllAdmin', (req, res) => {
         adminCollection.find({}).limit(4)
             .toArray((err, documents) => {
                 res.send(documents);
+            })
+    })
+
+    // delete product
+    app.delete('/delete/:id', (req, res) => {
+        adminCollection.deleteOne({ _id: ObjectId(req.params.id) })
+            .then(result => {
+                res.send(result.deletedCount > 0)
             })
     })
 
