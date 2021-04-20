@@ -1,6 +1,5 @@
 const express = require('express');
 const ObjectId = require('mongodb').ObjectId;
-
 const cors = require('cors');
 
 const MongoClient = require('mongodb').MongoClient;
@@ -8,28 +7,20 @@ const MongoClient = require('mongodb').MongoClient;
 require('dotenv').config()
 
 const app = express()
-
 app.use(express.json());
-
 app.use(cors());
 
 const port = process.env.PORT || 3333;
 
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.hrpca.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`;
-
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
-
-
 client.connect(err => {
+
     const productsCollection = client.db("hostguru").collection("services");
-
     const reviewsCollection = client.db("hostguru").collection("reviews");
-
     const orderCollection = client.db("hostguru").collection("order");
-
     const adminCollection = client.db("hostguru").collection("admin");
-
 
     // Add products API
     app.post('/addservice', (req, res) => {
@@ -95,7 +86,6 @@ client.connect(err => {
                 res.send(documents);
             })
     })
-
 
     // Add Admin API
     app.post('/addAdmin', (req, res) => {
